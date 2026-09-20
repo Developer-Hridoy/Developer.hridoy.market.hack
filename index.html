@@ -3,187 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#050914">
-<title>QX PRO • Forex Signal Terminal</title>
+<meta name="theme-color" content="#05070d">
+<title>QX PRO • QUOTEX SIGNAL TERMINAL</title>
 <style>
-:root{--bg:#050914;--card:#0a1120;--card2:#0d1729;--line:#1b2a42;--txt:#edf4ff;--muted:#8190a8;--blue:#2878ff;--green:#18d98b;--red:#ff5573;--yellow:#ffd45a}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#132447 0,#050914 45%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-.wrap{max-width:760px;margin:auto;padding:18px 14px 50px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.brand{font-weight:900;letter-spacing:.5px;font-size:19px}.sub{font-size:11px;color:var(--muted);margin-top:3px}.dot{width:9px;height:9px;background:var(--green);border-radius:50%;display:inline-block;margin-right:7px;box-shadow:0 0 12px var(--green)}
-.card{background:linear-gradient(180deg,rgba(13,23,41,.98),rgba(7,14,27,.98));border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0;box-shadow:0 12px 35px rgba(0,0,0,.18)}
-label{display:block;color:#8594ad;text-transform:uppercase;font-size:11px;letter-spacing:1.5px;margin:0 0 8px}
-select,input,button{width:100%;border-radius:15px;border:1px solid #20314d;background:#081120;color:var(--txt);padding:15px;font-size:16px;outline:none}
-select{appearance:auto}input:focus,select:focus{border-color:#357dff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.wide{grid-column:1/-1}
-button{border:0;background:linear-gradient(100deg,#1f70ff,#5a8fff);font-weight:900;cursor:pointer;margin-top:14px}
-button:disabled{opacity:.55}.ghost{background:#101b2e;border:1px solid #263957;font-weight:700}
-.status{font-size:12px;color:var(--muted);margin-top:10px;min-height:18px}.status.ok{color:var(--green)}.status.err{color:var(--red)}
-.hero{text-align:center;padding:22px}.signal{font-size:42px;font-weight:1000;letter-spacing:2px;margin:5px 0}.call{color:var(--green)}.put{color:var(--red)}.wait{color:var(--yellow)}
-.price{font-size:28px;font-weight:900}.small{font-size:12px;color:var(--muted)}
-.metric{padding:15px;border:1px solid var(--line);border-radius:17px;background:#081120}.metric b{display:block;font-size:20px;margin-top:5px}.metric span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
-.bar{height:8px;background:#142039;border-radius:99px;overflow:hidden;margin-top:10px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff5573,#ffd45a,#18d98b)}
-table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:left;padding:9px 5px;border-bottom:1px solid #17253b}th{color:#8290a6;text-transform:uppercase;font-size:10px;letter-spacing:1px}
-canvas{width:100%;height:230px;background:#07101e;border-radius:15px;border:1px solid #17263d}
-.note{line-height:1.55;color:#9aa8bc;font-size:12px}.keyrow{display:flex;gap:8px}.keyrow input{flex:1}.keyrow button{width:110px;margin:0}
-@media(max-width:520px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.keyrow{display:block}.keyrow button{width:100%;margin-top:8px}}
+:root{--bg:#05070d;--panel:#0b1120ee;--panel2:#080d18;--line:#1b2941;--txt:#f4f7ff;--muted:#8190a8;--blue:#5795ff;--cyan:#55e7ff;--green:#28dfa0;--red:#ff5f78;--yellow:#ffd166}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 50% -120px,#142552 0,#080b14 52%,#05070d 100%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.app{max-width:1180px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{display:flex;gap:11px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;font-weight:1000;background:linear-gradient(145deg,#76b3ff,#2d55c9);box-shadow:0 10px 30px #316eff44}.title{font-size:19px;font-weight:950}.sub{font-size:10px;color:var(--muted);margin-top:3px}.status{font-size:10px;color:#b8c6da;display:flex;gap:6px;align-items:center}.status i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 55px #0007;backdrop-filter:blur(18px)}.controls{margin-top:13px;padding:12px;display:grid;grid-template-columns:1.35fr .8fr .8fr auto;gap:8px}.field label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px;margin:0 0 5px 3px}.select,.btn,.file{width:100%;border:1px solid var(--line);background:#080e1b;color:var(--txt);border-radius:12px;padding:12px;outline:0}.btn{border:0;background:linear-gradient(135deg,#236fff,#5b94ff);font-weight:900}.file{padding:9px}.stats{margin-top:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.stat{padding:12px}.k{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.v{font-size:18px;font-weight:950;margin-top:5px}.s{font-size:9px;color:var(--muted);margin-top:3px}.grid{margin-top:10px;display:grid;grid-template-columns:1.45fr .8fr;gap:10px}.chart{overflow:hidden}.head{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.head b{font-size:12px}.canvas{height:365px;padding:8px}.canvas canvas{width:100%;height:100%}.signal{padding:16px}.ey{font-size:9px;color:var(--muted);letter-spacing:1.2px}.call{color:var(--green)}.put{color:var(--red)}.wait{color:var(--yellow)}.big{font-size:39px;font-weight:1000;margin-top:4px}.conf{font-size:24px;font-weight:950}.bar{height:8px;background:#172238;border-radius:99px;margin:11px 0;overflow:hidden}.bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green))}.box{margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#070c17}.box b{font-size:9px;color:#bfcbe0}.box p{font-size:11px;line-height:1.5;color:#aebbd0;margin:5px 0 0}.levels{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.level{padding:9px;border:1px solid var(--line);border-radius:11px;background:#070c17}.level b{display:block;font-size:8px;color:var(--muted)}.level span{display:block;font-size:12px;font-weight:850;margin-top:3px}.bottom{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.pad{padding:14px}.matrix{display:flex;flex-wrap:wrap;gap:6px}.pill{padding:7px 9px;border:1px solid var(--line);border-radius:999px;font-size:9px;background:#080f1d;color:#b9c7dc}.pill.ok{border-color:#176c52;color:#72edba}.pill.no{border-color:#6f2b3d;color:#ff8da0}.import{margin-top:10px}.notice{font-size:9px;color:#738198;line-height:1.5;margin-top:10px}.footer{text-align:center;color:#65738b;font-size:9px;padding:17px}.hide{display:none}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.stats .stat:first-child{grid-column:1/-1}.grid{grid-template-columns:1fr}.bottom{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.controls .field:last-child{grid-column:1/-1}.canvas{height:310px}}
+@media(max-width:480px){.app{padding:9px}.title{font-size:15px}.logo{width:38px;height:38px}.controls{grid-template-columns:1fr}.controls .field:last-child{grid-column:auto}.big{font-size:34px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top">
-    <div><div class="brand">QX PRO • FOREX SIGNAL TERMINAL</div><div class="sub"><span class="dot"></span>Market-data powered</div></div>
-    <div class="small" id="clock">--:--:--</div>
-  </div>
+<div class="app">
+<header class="top">
+<div class="brand"><div class="logo">QX</div><div><div class="title">QX PRO • QUOTEX SIGNAL TERMINAL</div><div class="sub">BINARY OPTIONS ANALYSIS • CONFLUENCE ENGINE</div></div></div>
+<div class="status"><i></i><span id="status">READY</span></div>
+</header>
 
-  <div class="card">
-    <label>Twelve Data API Key</label>
-    <div class="keyrow">
-      <input id="apiKey" type="password" placeholder="Paste your Twelve Data API key">
-      <button id="saveKey">SAVE</button>
-    </div>
-    <div class="status" id="keyStatus">Your key stays in this browser's local storage. Do not publish the key inside GitHub source code.</div>
-  </div>
+<section class="panel controls">
+<div class="field"><label>Quotex Asset</label><select id="asset" class="select">
+<option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option><option>USD/CAD</option><option>USD/CHF</option><option>EUR/JPY</option><option>GBP/JPY</option><option>EUR/GBP</option>
+<option>EUR/USD OTC</option><option>GBP/USD OTC</option><option>USD/JPY OTC</option><option>EUR/JPY OTC</option><option>GBP/JPY OTC</option><option>Gold OTC</option>
+</select></div>
+<div class="field"><label>Chart timeframe</label><select id="tf" class="select"><option>1m</option><option selected>5m</option><option>15m</option><option>30m</option><option>1h</option></select></div>
+<div class="field"><label>Expiry</label><select id="exp" class="select"><option>1 minute</option><option selected>5 minutes</option><option>10 minutes</option><option>15 minutes</option></select></div>
+<div class="field"><label>&nbsp;</label><button id="analyze" class="btn">ANALYZE CHART</button></div>
+</section>
 
-  <div class="card">
-    <div class="grid">
-      <div>
-        <label>Forex pair</label>
-        <select id="pair">
-          <option value="EUR/USD">EUR/USD</option><option value="GBP/USD">GBP/USD</option>
-          <option value="USD/JPY">USD/JPY</option><option value="AUD/USD">AUD/USD</option>
-          <option value="USD/CAD">USD/CAD</option><option value="USD/CHF">USD/CHF</option>
-          <option value="EUR/JPY">EUR/JPY</option><option value="GBP/JPY">GBP/JPY</option>
-          <option value="EUR/GBP">EUR/GBP</option>
-        </select>
-      </div>
-      <div>
-        <label>Chart timeframe</label>
-        <select id="tf"><option value="1min">1m</option><option value="5min">5m</option><option value="15min">15m</option><option value="30min">30m</option><option value="1h">1h</option></select>
-      </div>
-      <div>
-        <label>Expiry</label>
-        <select id="expiry"><option value="1">1 minute</option><option value="5">5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option></select>
-      </div>
-      <div>
-        <label>Refresh</label>
-        <select id="refresh"><option value="60">60 sec</option><option value="120">2 min</option><option value="300">5 min</option></select>
-      </div>
-      <div class="wide"><button id="analyze">LOAD LIVE FOREX DATA & ANALYZE</button></div>
-    </div>
-    <div class="status" id="status">Enter your API key, then press the button.</div>
-  </div>
+<section class="stats">
+<div class="panel stat"><div class="k">Input price</div><div id="price" class="v">—</div><div class="s">From imported chart data</div></div>
+<div class="panel stat"><div class="k">Signal confidence</div><div id="confidence" class="v">—</div><div class="s">Confluence score</div></div>
+<div class="panel stat"><div class="k">RSI 14</div><div id="rsi" class="v">—</div><div class="s">Momentum</div></div>
+<div class="panel stat"><div class="k">MACD</div><div id="macd" class="v">—</div><div id="macds" class="s">—</div></div>
+<div class="panel stat"><div class="k">Volatility</div><div id="vol" class="v">—</div><div class="s">ATR %</div></div>
+</section>
 
-  <div class="card hero">
-    <div class="small" id="marketTitle">FOREX • waiting for data</div>
-    <div id="signal" class="signal wait">WAIT</div>
-    <div class="price" id="price">—</div>
-    <div class="small" id="updated">No market data loaded</div>
-    <div class="bar"><i id="confidenceBar"></i></div>
-    <div class="small" style="margin-top:7px">Confluence confidence: <b id="confidence">—</b></div>
-  </div>
+<section class="grid">
+<div class="panel chart"><div class="head"><div><b id="chartTitle">QUOTEX • EUR/USD • 5m</b><div class="s">Imported candle structure • EMA 9 / EMA 21</div></div><div id="updated" class="s">—</div></div><div class="canvas"><canvas id="cv"></canvas></div></div>
+<aside class="panel signal">
+<div class="ey">AI CONFLUENCE SIGNAL</div>
+<div id="signal" class="big wait">WAIT</div>
+<div class="ey">CONFIDENCE</div><div id="conf2" class="conf">—</div><div class="bar"><i id="bar"></i></div>
+<div class="box"><b>MARKET REGIME</b><p id="regime">Waiting for chart candles.</p></div>
+<div class="box"><b>AI REASONING</b><p id="reason">Import Quotex candle data first. The engine will not invent prices.</p></div>
+<div class="levels"><div class="level"><b>SUPPORT</b><span id="support">—</span></div><div class="level"><b>RESISTANCE</b><span id="resistance">—</span></div><div class="level"><b>INVALIDATION</b><span id="invalid">—</span></div><div class="level"><b>EXPIRY</b><span id="expiry">5 minutes</span></div></div>
+</aside>
+</section>
 
-  <div class="grid">
-    <div class="metric"><span>RSI 14</span><b id="rsi">—</b></div>
-    <div class="metric"><span>MACD</span><b id="macd">—</b></div>
-    <div class="metric"><span>EMA 9 / 21</span><b id="ema">—</b></div>
-    <div class="metric"><span>ATR %</span><b id="atr">—</b></div>
-    <div class="metric"><span>Support</span><b id="support">—</b></div>
-    <div class="metric"><span>Resistance</span><b id="resistance">—</b></div>
-  </div>
-
-  <div class="card">
-    <label>Price structure</label>
-    <canvas id="chart" width="900" height="300"></canvas>
-  </div>
-
-  <div class="card">
-    <label>AI-style confluence breakdown</label>
-    <table>
-      <thead><tr><th>Factor</th><th>Reading</th><th>Bias</th></tr></thead>
-      <tbody id="breakdown"><tr><td colspan="3" class="small">No data yet.</td></tr></tbody>
-    </table>
-  </div>
-
-  <div class="card">
-    <label>Important</label>
-    <div class="note">
-      This terminal uses external forex market data, not Quotex's private/OTC feed. A CALL/PUT result is a technical signal generated from the loaded candles, not a guarantee of outcome. Forex data can differ from a broker's OTC price.
-    </div>
-  </div>
+<section class="bottom">
+<div class="panel pad"><div class="ey">CONFLUENCE MATRIX</div><div id="matrix" class="matrix" style="margin-top:9px"><span class="pill">No data</span></div></div>
+<div class="panel pad"><div class="ey">QUOTEX DATA INPUT</div>
+<div class="import"><input id="file" class="file" type="file" accept=".csv,.json,.txt"></div>
+<div class="notice">For genuine Quotex/OTC analysis, export or paste candle data from the chart. This page deliberately does not fabricate a Quotex live feed or pretend to have an official Quotex API.</div>
+</div>
+</section>
+<div class="footer">QX PRO is an analysis assistant, not an official Quotex product. Signals are probabilistic technical interpretations and are not guaranteed. Use only data you trust.</div>
 </div>
 
 <script>
-const $=id=>document.getElementById(id);
-const KEY='qx_td_api_key';
-$('apiKey').value=localStorage.getItem(KEY)||'';
-let timer=null, candles=[];
-
-$('saveKey').onclick=()=>{const k=$('apiKey').value.trim(); if(!k)return; localStorage.setItem(KEY,k); $('keyStatus').textContent='API key saved locally on this device.'; $('keyStatus').className='status ok';};
-$('refresh').onchange=()=>{ if(timer)clearInterval(timer); if(localStorage.getItem(KEY)) timer=setInterval(loadAndAnalyze,+$('refresh').value*1000); };
-$('analyze').onclick=loadAndAnalyze;
-$('pair').onchange=()=>{if(localStorage.getItem(KEY))loadAndAnalyze()};
-$('tf').onchange=()=>{if(localStorage.getItem(KEY))loadAndAnalyze()};
-
-setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString()},1000);
-if(localStorage.getItem(KEY)) setTimeout(()=>{loadAndAnalyze();timer=setInterval(loadAndAnalyze,+$('refresh').value*1000)},500);
-
-function ema(vals,n){let k=2/(n+1),e=vals[0]; for(let i=1;i<vals.length;i++)e=vals[i]*k+e*(1-k); return e}
-function rsi(vals,n=14){if(vals.length<n+1)return null;let g=0,l=0;for(let i=1;i<=n;i++){let d=vals[i]-vals[i-1];d>=0?g+=d:l-=d}let ag=g/n,al=l/n;for(let i=n+1;i<vals.length;i++){let d=vals[i]-vals[i-1];ag=(ag*(n-1)+(d>0?d:0))/n;al=(al*(n-1)+(d<0?-d:0))/n}return al===0?100:100-100/(1+ag/al)}
-function atr(data,n=14){if(data.length<n+1)return null;let trs=[];for(let i=1;i<data.length;i++){let x=data[i],p=data[i-1];trs.push(Math.max(x.high-x.low,Math.abs(x.high-p.close),Math.abs(x.low-p.close)))}return trs.slice(-n).reduce((a,b)=>a+b,0)/n}
-function fmt(v){return Number.isFinite(v)?v.toFixed(v>20?3:5):'—'}
-function setStatus(t,ok=false,err=false){$('status').textContent=t;$('status').className='status '+(ok?'ok':err?'err':'')}
-
-async function loadAndAnalyze(){
- const key=localStorage.getItem(KEY)||$('apiKey').value.trim();
- if(!key){setStatus('API key missing. Paste your Twelve Data key first.',false,true);return}
- $('analyze').disabled=true;setStatus('Loading live forex candles…');
- const symbol=$('pair').value, interval=$('tf').value;
- try{
-   const url='https://api.twelvedata.com/time_series?symbol='+encodeURIComponent(symbol)+'&interval='+encodeURIComponent(interval)+'&outputsize=160&timezone=UTC&apikey='+encodeURIComponent(key);
-   const res=await fetch(url,{cache:'no-store'});
-   const json=await res.json();
-   if(!res.ok || json.status==='error' || !Array.isArray(json.values)) throw new Error(json.message||'No candle data returned');
-   candles=json.values.map(x=>({time:x.datetime,open:+x.open,high:+x.high,low:+x.low,close:+x.close})).filter(x=>[x.open,x.high,x.low,x.close].every(Number.isFinite)).reverse();
-   if(candles.length<40)throw new Error('Not enough candles returned for analysis.');
-   analyze(candles);
-   setStatus('Live data loaded • '+candles.length+' candles • last update '+new Date().toLocaleTimeString(),true);
- }catch(e){setStatus(e.message||'Data request failed. Check API key, plan and internet connection.',false,true)}
- finally{$('analyze').disabled=false}
+const $=x=>document.getElementById(x),fmt=n=>Number(n).toLocaleString(undefined,{maximumFractionDigits:6});
+function ema(a,p){let k=2/(p+1),e=a[0],o=[];for(let i=0;i<a.length;i++){e=i?e+(a[i]-e)*k:e;o.push(e)}return o}
+function rsi(a,p=14){let g=0,l=0,o=Array(a.length).fill(50);for(let i=1;i<=p&&i<a.length;i++){let d=a[i]-a[i-1];g+=Math.max(d,0);l+=Math.max(-d,0)}g/=p;l/=p;o[p]=l?100-100/(1+g/l):100;for(let i=p+1;i<a.length;i++){let d=a[i]-a[i-1];g=(g*(p-1)+Math.max(d,0))/p;l=(l*(p-1)+Math.max(-d,0))/p;o[i]=l?100-100/(1+g/l):100}return o}
+function atr(c,p=14){let tr=c.map((x,i)=>i?Math.max(x.h-x.l,Math.abs(x.h-c[i-1].c),Math.abs(x.l-c[i-1].c)):x.h-x.l),e=tr.slice(0,p).reduce((a,b)=>a+b,0)/p,o=Array(tr.length).fill(e);for(let i=p;i<tr.length;i++){e=(e*(p-1)+tr[i])/p;o[i]=e}return o}
+function macd(a){let x=ema(a,12),y=ema(a,26),m=x.map((v,i)=>v-y[i]),s=ema(m,9);return{m,s,h:m.map((v,i)=>v-s[i])}}
+function parseText(t){
+ try{let j=JSON.parse(t);let arr=Array.isArray(j)?j:(j.data||j.candles||[]);return arr.map(x=>({o:+(x.o??x.open),h:+(x.h??x.high),l:+(x.l??x.low),c:+(x.c??x.close),t:x.t??x.time})).filter(x=>[x.o,x.h,x.l,x.c].every(Number.isFinite))}
+ catch(e){}
+ let lines=t.trim().split(/\r?\n/).filter(Boolean),rows=lines.map(x=>x.split(/[,;\t]/).map(v=>v.trim()));if(rows.length&&/[a-zA-Z]/.test(rows[0].join("")))rows.shift();
+ return rows.map(r=>({t:r[0],o:+r[1],h:+r[2],l:+r[3],c:+r[4]})).filter(x=>[x.o,x.h,x.l,x.c].every(Number.isFinite))
 }
-
-function analyze(d){
- const c=d.map(x=>x.close), last=d[d.length-1], r=rsi(c), e9=ema(c.slice(-80),9), e21=ema(c.slice(-100),21);
- const e9prev=ema(c.slice(-81,-1),9), e21prev=ema(c.slice(-101,-1),21);
- const mac=(e9-e21), prev=(e9prev-e21prev), a=atr(d), atrp=a/last.close*100;
- const highs=d.slice(-30).map(x=>x.high), lows=d.slice(-30).map(x=>x.low);
- const res=Math.max(...highs), sup=Math.min(...lows);
- let score=0, rows=[];
- const trend=e9>e21?1:e9<e21?-1:0; score+=trend*25; rows.push(['EMA trend',trend>0?'Bullish':trend<0?'Bearish':'Neutral',trend>0?'CALL':trend<0?'PUT':'WAIT']);
- const mom=r>55?1:r<45?-1:0; score+=mom*20; rows.push(['RSI 14',r.toFixed(1),mom>0?'CALL':mom<0?'PUT':'WAIT']);
- const mm=mac>0?1:-1; score+=mm*20; rows.push(['MACD',mac>0?'Positive':'Negative',mm>0?'CALL':'PUT']);
- const accel=mac>prev?1:mac<prev?-1:0; score+=accel*15; rows.push(['MACD momentum',accel>0?'Rising':accel<0?'Falling':'Flat',accel>0?'CALL':accel<0?'PUT':'WAIT']);
- const range=(last.close-sup)/(res-sup||1); const sr=range>.72?-1:range<.28?1:0; score+=sr*10; rows.push(['Support / resistance',range<.28?'Near support':range>.72?'Near resistance':'Mid-range',sr>0?'CALL':sr<0?'PUT':'WAIT']);
- const body=Math.abs(last.close-last.open)/(last.high-last.low||1); rows.push(['Candle strength',(body*100).toFixed(0)+'% body',body>.55?(last.close>last.open?'CALL':'PUT'):'WAIT']);
- let signal='WAIT'; if(score>=30)signal='CALL'; if(score<=-30)signal='PUT';
- let conf=Math.min(95,Math.max(50,50+Math.abs(score)));
- $('marketTitle').textContent='FOREX • '+$('pair').value+' • '+$('tf').selectedOptions[0].textContent+' • '+$('expiry').value+'m expiry';
- $('signal').textContent=signal;$('signal').className='signal '+signal.toLowerCase();
- $('price').textContent=fmt(last.close);$('updated').textContent='Candle: '+last.time+' UTC';
- $('confidence').textContent=Math.round(conf)+'%';$('confidenceBar').style.width=conf+'%';
- $('rsi').textContent=r.toFixed(2);$('macd').textContent=mac.toFixed(6);
- $('ema').textContent=fmt(e9)+' / '+fmt(e21);$('atr').textContent=atrp.toFixed(3)+'%';
- $('support').textContent=fmt(sup);$('resistance').textContent=fmt(res);
- $('breakdown').innerHTML=rows.map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td></tr>').join('');
- drawChart(d.slice(-70));
+let candles=[];
+function analyze(){
+ if(candles.length<40){$("status").textContent="WAITING FOR CANDLE DATA";$("reason").textContent="Import at least 40 OHLC candles from your Quotex chart. No fake/live-looking price is generated.";return}
+ let a=candles.map(x=>x.c),i=a.length-1,e9=ema(a,9),e21=ema(a,21),rr=rsi(a),at=atr(candles),mc=macd(a),score=0,why=[],m=[];
+ function add(n,p,txt,pos){score+=p;why.push(txt);m.push([n,pos])}
+ if(a[i]>e9[i])add("Price > EMA9",2,"Price is above EMA9.",1);else add("Price < EMA9",-2,"Price is below EMA9.",0);
+ if(e9[i]>e21[i])add("EMA9 > EMA21",2,"Short trend is above the medium EMA.",1);else add("EMA9 < EMA21",-2,"Short trend is below the medium EMA.",0);
+ if(rr[i]>55&&rr[i]<72)add("RSI bullish",2,"RSI supports momentum without an extreme reading.",1);else if(rr[i]<45)add("RSI weak",-2,"RSI is below the midpoint.",0);else if(rr[i]>78)add("RSI high",-1,"RSI is elevated; chasing is higher risk.",0);else add("RSI neutral",0,"RSI is near neutral.",2);
+ if(mc.h[i]>0)add("MACD +",2,"MACD histogram is positive.",1);else add("MACD -",-2,"MACD histogram is negative.",0);
+ let slope=(e21[i]-e21[Math.max(0,i-12)])/e21[Math.max(0,i-12)]*100;if(slope>.08)add("Trend rising",1,"EMA21 slope is rising.",1);else if(slope<-.08)add("Trend falling",-1,"EMA21 slope is falling.",0);else add("Trend flat",0,"EMA21 slope is relatively flat.",2);
+ let recent=candles.slice(-30),sup=Math.min(...recent.map(x=>x.l)),res=Math.max(...recent.map(x=>x.h)),vol=at[i]/a[i]*100;
+ let bias=score>=5?"CALL":score<=-5?"PUT":"WAIT",conf=Math.min(94,Math.max(48,50+Math.abs(score)*7));if(Math.abs(score)<=2)conf=60;
+ let regime=vol>.7?"HIGH VOLATILITY":Math.abs(e9[i]-e21[i])/a[i]*100>.15?"TRENDING":"RANGE / MIXED";
+ $("price").textContent=fmt(a[i]);$("confidence").textContent=conf+"%";$("conf2").textContent=conf+"%";$("rsi").textContent=rr[i].toFixed(1);$("macd").textContent=mc.m[i].toFixed(6);$("macds").textContent=mc.h[i]>=0?"Histogram positive":"Histogram negative";$("vol").textContent=vol.toFixed(3)+"%";$("signal").textContent=bias;$("signal").className="big "+(bias==="CALL"?"call":bias==="PUT"?"put":"wait");$("bar").style.width=(50+score*8)+"%";$("regime").textContent=regime+" • "+$("asset").value+" • "+$("tf").value;$("reason").innerHTML=why.join(" ");
+ $("support").textContent=fmt(sup);$("resistance").textContent=fmt(res);$("invalid").textContent=bias==="CALL"?fmt(sup):bias==="PUT"?fmt(res):"—";$("expiry").textContent=$("exp").value;
+ $("matrix").innerHTML=m.map(x=>`<span class="pill ${x[1]===1?"ok":x[1]===0?"no":""}">${x[0]}</span>`).join("");
+ $("chartTitle").textContent="QUOTEX • "+$("asset").value+" • "+$("tf").value;$("updated").textContent=new Date().toLocaleTimeString();$("status").textContent="ANALYSIS READY";draw(candles,e9,e21)
 }
-function drawChart(d){
- const cv=$('chart'),ctx=cv.getContext('2d'),w=cv.width,h=cv.height;
- ctx.clearRect(0,0,w,h); const lo=Math.min(...d.map(x=>x.low)),hi=Math.max(...d.map(x=>x.high)),pad=24;
- ctx.strokeStyle='#17263d';ctx.lineWidth=1;
- for(let i=1;i<5;i++){let y=pad+(h-pad*2)*i/5;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
- const y=v=>h-pad-(v-lo)/(hi-lo||1)*(h-pad*2), step=w/d.length;
- d.forEach((x,i)=>{let X=i*step+step/2;ctx.strokeStyle=x.close>=x.open?'#18d98b':'#ff5573';ctx.beginPath();ctx.moveTo(X,y(x.high));ctx.lineTo(X,y(x.low));ctx.stroke();ctx.lineWidth=Math.max(2,step*.55);ctx.beginPath();ctx.moveTo(X,y(x.open));ctx.lineTo(X,y(x.close));ctx.stroke();ctx.lineWidth=1});
-}
+function draw(c,e9,e21){let cv=$("cv"),d=devicePixelRatio||1,r=cv.getBoundingClientRect();cv.width=r.width*d;cv.height=r.height*d;let x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);let w=r.width,h=r.height,p=24,v=[...c.map(z=>z.c),...e9,...e21],mn=Math.min(...v),mx=Math.max(...v),sx=(w-p*2)/(c.length-1),sy=z=>h-p-(z-mn)/(mx-mn||1)*(h-p*2);x.strokeStyle="#172238";x.lineWidth=1;for(let k=0;k<5;k++){let y=p+k*(h-p*2)/4;x.beginPath();x.moveTo(p,y);x.lineTo(w-p,y);x.stroke()}function ln(a,col,lw){x.strokeStyle=col;x.lineWidth=lw;x.beginPath();a.forEach((z,i)=>{let X=p+i*sx,Y=sy(z);i?x.lineTo(X,Y):x.moveTo(X,Y)});x.stroke()}ln(c.map(z=>z.c),"#eef3ff",1.8);ln(e9,"#63a6ff",1.2);ln(e21,"#ffd166",1.2)}
+$("file").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;let c=parseText(await f.text());if(c.length<40){$("status").textContent="NEED 40+ VALID OHLC CANDLES";return}candles=c.slice(-180);$("status").textContent="CANDLES IMPORTED";analyze()});
+$("analyze").onclick=analyze;$("asset").onchange=()=>{if(candles.length)analyze()};$("tf").onchange=()=>{if(candles.length)analyze()};$("exp").onchange=()=>{$("expiry").textContent=$("exp").value};
+window.onresize=()=>{if(candles.length)analyze()};
 </script>
 </body>
 </html>
