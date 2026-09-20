@@ -4,102 +4,95 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#05070d">
-<title>QX PRO ULTRA PREMIUM</title>
+<title>QX PRO • QUOTEX SIGNAL TERMINAL</title>
 <style>
-:root{--bg:#05070d;--panel:rgba(13,18,31,.82);--panel2:#0b1020;--line:#1d2941;--text:#f4f7ff;--muted:#8190aa;--blue:#6ea8ff;--cyan:#5de5ff;--green:#31e39a;--red:#ff6078;--yellow:#ffd166;--shadow:0 20px 60px rgba(0,0,0,.35)}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(900px 500px at 50% -100px,#16254b 0,#080b14 55%,#05070d 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-button,select{font:inherit}.app{max-width:1280px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#7bb2ff,#3156c9);display:grid;place-items:center;font-weight:1000;box-shadow:0 8px 30px #3267ff55}.title{font-size:20px;font-weight:950;letter-spacing:.4px}.sub{font-size:11px;color:var(--muted);margin-top:3px}.live{display:flex;gap:7px;align-items:center;color:#b9c5d8;font-size:11px}.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
-.toolbar{margin-top:16px;padding:12px;border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(20px);border-radius:20px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.1fr .8fr .8fr auto;gap:9px}.control{min-width:0}.control label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px;margin:0 0 5px 4px}.select,.btn{width:100%;border:1px solid var(--line);border-radius:13px;background:#0b1120;color:var(--text);padding:12px;outline:none}.btn{background:linear-gradient(135deg,#246fff,#4c8dff);border:0;font-weight:800}.btn:disabled{opacity:.55}
-.ticker{margin-top:12px;display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:9px}.metric,.panel{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(20px);border-radius:18px;box-shadow:var(--shadow)}.metric{padding:13px}.k{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.v{font-size:20px;font-weight:900;margin-top:6px}.s{font-size:10px;color:var(--muted);margin-top:4px}
-.main{margin-top:12px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,.75fr);gap:12px}.chart{overflow:hidden}.head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.head b{font-size:13px}.canvas{height:390px;padding:8px}.canvas canvas{width:100%;height:100%}
-.ai{padding:16px}.aiTop{display:flex;align-items:end;justify-content:space-between}.eyebrow{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}.bias{font-size:36px;font-weight:1000;letter-spacing:-1px;margin-top:5px}.bull{color:var(--green)}.bear{color:var(--red)}.wait{color:var(--yellow)}.confidence{font-size:25px;font-weight:900}.bar{height:8px;background:#1a2335;border-radius:99px;overflow:hidden;margin:13px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green));width:50%;border-radius:99px}.aiBox{border:1px solid var(--line);background:#080d18;border-radius:14px;padding:11px;margin-top:9px}.aiBox strong{font-size:10px;color:#dce6fb}.aiBox p{font-size:12px;line-height:1.5;color:#aebbd0;margin:5px 0 0}.levels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.level{padding:10px;border:1px solid var(--line);border-radius:12px;background:#080d18}.level b{font-size:9px;color:var(--muted);display:block}.level span{font-size:13px;font-weight:800;display:block;margin-top:4px}
-.bottom{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.panel{padding:15px}.panel h3{font-size:12px;margin:0 0 11px}.pills{display:flex;flex-wrap:wrap;gap:6px}.pill{font-size:10px;padding:7px 9px;border-radius:999px;background:#0a1120;border:1px solid var(--line);color:#b8c6dc}.pill.pos{border-color:#1f7658;color:#7ff0be}.pill.neg{border-color:#793043;color:#ff8b9d}.rows{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.row{padding:10px;border:1px solid var(--line);border-radius:12px;background:#080d18}.row b{display:block;font-size:9px;color:var(--muted)}.row span{display:block;font-size:13px;font-weight:800;margin-top:4px}
-.history{margin-top:12px}.table{width:100%;border-collapse:collapse;font-size:10px}.table th,.table td{padding:9px 6px;text-align:left;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-weight:600}.footer{text-align:center;color:#66738a;font-size:9px;padding:18px 0}
-@media(max-width:900px){.ticker{grid-template-columns:repeat(2,1fr)}.ticker .metric:first-child{grid-column:1/-1}.main{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr 1fr}.toolbar .control:last-child{grid-column:1/-1}.bottom{grid-template-columns:1fr}}
-@media(max-width:520px){.app{padding:10px}.toolbar{grid-template-columns:1fr 1fr}.title{font-size:16px}.logo{width:38px;height:38px}.canvas{height:300px}.rows{grid-template-columns:1fr 1fr}.ticker{gap:7px}.metric{padding:11px}}
+:root{--bg:#05070d;--panel:#0b1120ee;--panel2:#080d18;--line:#1b2941;--txt:#f4f7ff;--muted:#8190a8;--blue:#5795ff;--cyan:#55e7ff;--green:#28dfa0;--red:#ff5f78;--yellow:#ffd166}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 50% -120px,#142552 0,#080b14 52%,#05070d 100%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.app{max-width:1180px;margin:auto;padding:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{display:flex;gap:11px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;font-weight:1000;background:linear-gradient(145deg,#76b3ff,#2d55c9);box-shadow:0 10px 30px #316eff44}.title{font-size:19px;font-weight:950}.sub{font-size:10px;color:var(--muted);margin-top:3px}.status{font-size:10px;color:#b8c6da;display:flex;gap:6px;align-items:center}.status i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 55px #0007;backdrop-filter:blur(18px)}.controls{margin-top:13px;padding:12px;display:grid;grid-template-columns:1.35fr .8fr .8fr auto;gap:8px}.field label{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:1px;margin:0 0 5px 3px}.select,.btn,.file{width:100%;border:1px solid var(--line);background:#080e1b;color:var(--txt);border-radius:12px;padding:12px;outline:0}.btn{border:0;background:linear-gradient(135deg,#236fff,#5b94ff);font-weight:900}.file{padding:9px}.stats{margin-top:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.stat{padding:12px}.k{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.v{font-size:18px;font-weight:950;margin-top:5px}.s{font-size:9px;color:var(--muted);margin-top:3px}.grid{margin-top:10px;display:grid;grid-template-columns:1.45fr .8fr;gap:10px}.chart{overflow:hidden}.head{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.head b{font-size:12px}.canvas{height:365px;padding:8px}.canvas canvas{width:100%;height:100%}.signal{padding:16px}.ey{font-size:9px;color:var(--muted);letter-spacing:1.2px}.call{color:var(--green)}.put{color:var(--red)}.wait{color:var(--yellow)}.big{font-size:39px;font-weight:1000;margin-top:4px}.conf{font-size:24px;font-weight:950}.bar{height:8px;background:#172238;border-radius:99px;margin:11px 0;overflow:hidden}.bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green))}.box{margin-top:8px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#070c17}.box b{font-size:9px;color:#bfcbe0}.box p{font-size:11px;line-height:1.5;color:#aebbd0;margin:5px 0 0}.levels{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.level{padding:9px;border:1px solid var(--line);border-radius:11px;background:#070c17}.level b{display:block;font-size:8px;color:var(--muted)}.level span{display:block;font-size:12px;font-weight:850;margin-top:3px}.bottom{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.pad{padding:14px}.matrix{display:flex;flex-wrap:wrap;gap:6px}.pill{padding:7px 9px;border:1px solid var(--line);border-radius:999px;font-size:9px;background:#080f1d;color:#b9c7dc}.pill.ok{border-color:#176c52;color:#72edba}.pill.no{border-color:#6f2b3d;color:#ff8da0}.import{margin-top:10px}.notice{font-size:9px;color:#738198;line-height:1.5;margin-top:10px}.footer{text-align:center;color:#65738b;font-size:9px;padding:17px}.hide{display:none}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.stats .stat:first-child{grid-column:1/-1}.grid{grid-template-columns:1fr}.bottom{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.controls .field:last-child{grid-column:1/-1}.canvas{height:310px}}
+@media(max-width:480px){.app{padding:9px}.title{font-size:15px}.logo{width:38px;height:38px}.controls{grid-template-columns:1fr}.controls .field:last-child{grid-column:auto}.big{font-size:34px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
-  <div class="brand"><div class="logo">QX</div><div><div class="title">QX PRO ULTRA PREMIUM</div><div class="sub">AI CONFLUENCE • MARKET INTELLIGENCE TERMINAL</div></div></div>
-  <div class="live"><i id="liveDot"></i><span id="liveText">CONNECTING</span></div>
+<div class="brand"><div class="logo">QX</div><div><div class="title">QX PRO • QUOTEX SIGNAL TERMINAL</div><div class="sub">BINARY OPTIONS ANALYSIS • CONFLUENCE ENGINE</div></div></div>
+<div class="status"><i></i><span id="status">READY</span></div>
 </header>
 
-<section class="toolbar">
-  <div class="control"><label>Asset</label><select id="symbol" class="select"><option>BTCUSDT</option><option>ETHUSDT</option><option>BNBUSDT</option><option>SOLUSDT</option><option>XRPUSDT</option><option>DOGEUSDT</option></select></div>
-  <div class="control"><label>Timeframe</label><select id="tf" class="select"><option>1m</option><option selected>5m</option><option>15m</option><option>1h</option><option>4h</option></select></div>
-  <div class="control"><label>Engine</label><select class="select" disabled><option>AI Confluence v1</option></select></div>
-  <div class="control"><label>&nbsp;</label><button id="go" class="btn">RUN ANALYSIS</button></div>
+<section class="panel controls">
+<div class="field"><label>Quotex Asset</label><select id="asset" class="select">
+<option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option><option>USD/CAD</option><option>USD/CHF</option><option>EUR/JPY</option><option>GBP/JPY</option><option>EUR/GBP</option>
+<option>EUR/USD OTC</option><option>GBP/USD OTC</option><option>USD/JPY OTC</option><option>EUR/JPY OTC</option><option>GBP/JPY OTC</option><option>Gold OTC</option>
+</select></div>
+<div class="field"><label>Chart timeframe</label><select id="tf" class="select"><option>1m</option><option selected>5m</option><option>15m</option><option>30m</option><option>1h</option></select></div>
+<div class="field"><label>Expiry</label><select id="exp" class="select"><option>1 minute</option><option selected>5 minutes</option><option>10 minutes</option><option>15 minutes</option></select></div>
+<div class="field"><label>&nbsp;</label><button id="analyze" class="btn">ANALYZE CHART</button></div>
 </section>
 
-<section class="ticker">
- <div class="metric"><div class="k">Market Price</div><div id="price" class="v">—</div><div id="change" class="s">—</div></div>
- <div class="metric"><div class="k">AI Confidence</div><div id="conf" class="v">—</div><div id="regime" class="s">—</div></div>
- <div class="metric"><div class="k">RSI 14</div><div id="rsi" class="v">—</div><div class="s">Momentum</div></div>
- <div class="metric"><div class="k">MACD</div><div id="macd" class="v">—</div><div id="macdState" class="s">—</div></div>
- <div class="metric"><div class="k">ATR</div><div id="atr" class="v">—</div><div id="atrPct" class="s">—</div></div>
+<section class="stats">
+<div class="panel stat"><div class="k">Input price</div><div id="price" class="v">—</div><div class="s">From imported chart data</div></div>
+<div class="panel stat"><div class="k">Signal confidence</div><div id="confidence" class="v">—</div><div class="s">Confluence score</div></div>
+<div class="panel stat"><div class="k">RSI 14</div><div id="rsi" class="v">—</div><div class="s">Momentum</div></div>
+<div class="panel stat"><div class="k">MACD</div><div id="macd" class="v">—</div><div id="macds" class="s">—</div></div>
+<div class="panel stat"><div class="k">Volatility</div><div id="vol" class="v">—</div><div class="s">ATR %</div></div>
 </section>
 
-<section class="main">
- <div class="panel chart">
-  <div class="head"><div><b id="chartName">BTCUSDT • 5m</b><div class="s">Live close structure with EMA 9 / EMA 21</div></div><div id="updated" class="s">—</div></div>
-  <div class="canvas"><canvas id="cv"></canvas></div>
- </div>
- <aside class="panel ai">
-   <div class="eyebrow">AI MARKET VERDICT</div>
-   <div class="aiTop"><div id="bias" class="bias wait">WAIT</div><div><div class="eyebrow">CONFIDENCE</div><div id="confidence" class="confidence">—</div></div></div>
-   <div class="bar"><i id="bar"></i></div>
-   <div class="aiBox"><strong>MARKET REGIME</strong><p id="regime2">—</p></div>
-   <div class="aiBox"><strong>AI REASONING</strong><div id="reasoning"></div></div>
-   <div class="levels">
-     <div class="level"><b>SUPPORT</b><span id="support">—</span></div>
-     <div class="level"><b>RESISTANCE</b><span id="resistance">—</span></div>
-     <div class="level"><b>INVALIDATION</b><span id="invalid">—</span></div>
-     <div class="level"><b>RISK STATE</b><span id="risk">—</span></div>
-   </div>
- </aside>
+<section class="grid">
+<div class="panel chart"><div class="head"><div><b id="chartTitle">QUOTEX • EUR/USD • 5m</b><div class="s">Imported candle structure • EMA 9 / EMA 21</div></div><div id="updated" class="s">—</div></div><div class="canvas"><canvas id="cv"></canvas></div></div>
+<aside class="panel signal">
+<div class="ey">AI CONFLUENCE SIGNAL</div>
+<div id="signal" class="big wait">WAIT</div>
+<div class="ey">CONFIDENCE</div><div id="conf2" class="conf">—</div><div class="bar"><i id="bar"></i></div>
+<div class="box"><b>MARKET REGIME</b><p id="regime">Waiting for chart candles.</p></div>
+<div class="box"><b>AI REASONING</b><p id="reason">Import Quotex candle data first. The engine will not invent prices.</p></div>
+<div class="levels"><div class="level"><b>SUPPORT</b><span id="support">—</span></div><div class="level"><b>RESISTANCE</b><span id="resistance">—</span></div><div class="level"><b>INVALIDATION</b><span id="invalid">—</span></div><div class="level"><b>EXPIRY</b><span id="expiry">5 minutes</span></div></div>
+</aside>
 </section>
 
 <section class="bottom">
- <div class="panel"><h3>CONFLUENCE MATRIX</h3><div id="pills" class="pills"></div></div>
- <div class="panel"><h3>MARKET SNAPSHOT</h3><div class="rows">
-  <div class="row"><b>EMA 9</b><span id="ema9">—</span></div><div class="row"><b>EMA 21</b><span id="ema21">—</span></div><div class="row"><b>MOMENTUM</b><span id="momentum">—</span></div>
-  <div class="row"><b>VOLATILITY</b><span id="volatility">—</span></div><div class="row"><b>STRUCTURE</b><span id="structure">—</span></div><div class="row"><b>DATA</b><span>LIVE</span></div>
- </div></div>
+<div class="panel pad"><div class="ey">CONFLUENCE MATRIX</div><div id="matrix" class="matrix" style="margin-top:9px"><span class="pill">No data</span></div></div>
+<div class="panel pad"><div class="ey">QUOTEX DATA INPUT</div>
+<div class="import"><input id="file" class="file" type="file" accept=".csv,.json,.txt"></div>
+<div class="notice">For genuine Quotex/OTC analysis, export or paste candle data from the chart. This page deliberately does not fabricate a Quotex live feed or pretend to have an official Quotex API.</div>
+</div>
 </section>
-
-<section class="panel history"><h3>SIGNAL HISTORY</h3><table class="table"><thead><tr><th>TIME</th><th>ASSET</th><th>TF</th><th>BIAS</th><th>CONF.</th><th>REGIME</th></tr></thead><tbody id="hist"></tbody></table></section>
-<div class="footer">Public market data • No synthetic prices • Technical analysis only, not financial advice. A signal is a structured interpretation of indicators, not a guarantee of future movement.</div>
+<div class="footer">QX PRO is an analysis assistant, not an official Quotex product. Signals are probabilistic technical interpretations and are not guaranteed. Use only data you trust.</div>
 </div>
 
 <script>
-const $=id=>document.getElementById(id), fmt=n=>Number(n).toLocaleString(undefined,{maximumFractionDigits:n>100?2:6});
+const $=x=>document.getElementById(x),fmt=n=>Number(n).toLocaleString(undefined,{maximumFractionDigits:6});
 function ema(a,p){let k=2/(p+1),e=a[0],o=[];for(let i=0;i<a.length;i++){e=i?e+(a[i]-e)*k:e;o.push(e)}return o}
-function rsi(a,p=14){let g=0,l=0,o=Array(a.length).fill(50);for(let i=1;i<=p;i++){let d=a[i]-a[i-1];g+=Math.max(d,0);l+=Math.max(-d,0)}g/=p;l/=p;o[p]=l?100-100/(1+g/l):100;for(let i=p+1;i<a.length;i++){let d=a[i]-a[i-1];g=(g*(p-1)+Math.max(d,0))/p;l=(l*(p-1)+Math.max(-d,0))/p;o[i]=l?100-100/(1+g/l):100}return o}
+function rsi(a,p=14){let g=0,l=0,o=Array(a.length).fill(50);for(let i=1;i<=p&&i<a.length;i++){let d=a[i]-a[i-1];g+=Math.max(d,0);l+=Math.max(-d,0)}g/=p;l/=p;o[p]=l?100-100/(1+g/l):100;for(let i=p+1;i<a.length;i++){let d=a[i]-a[i-1];g=(g*(p-1)+Math.max(d,0))/p;l=(l*(p-1)+Math.max(-d,0))/p;o[i]=l?100-100/(1+g/l):100}return o}
 function atr(c,p=14){let tr=c.map((x,i)=>i?Math.max(x.h-x.l,Math.abs(x.h-c[i-1].c),Math.abs(x.l-c[i-1].c)):x.h-x.l),e=tr.slice(0,p).reduce((a,b)=>a+b,0)/p,o=Array(tr.length).fill(e);for(let i=p;i<tr.length;i++){e=(e*(p-1)+tr[i])/p;o[i]=e}return o}
 function macd(a){let x=ema(a,12),y=ema(a,26),m=x.map((v,i)=>v-y[i]),s=ema(m,9);return{m,s,h:m.map((v,i)=>v-s[i])}}
-function analyze(c){let a=c.map(x=>x.c),i=a.length-1,e9=ema(a,9),e21=ema(a,21),rr=rsi(a),at=atr(c),mc=macd(a),score=0,why=[],pills=[];
-const add=(name,pts,txt,pos)=>{score+=pts;pills.push([name,pos]);why.push(txt)};
-if(a[i]>e9[i])add("Price > EMA9",2,"Price is above the short EMA.",1);else add("Price < EMA9",-2,"Price is below the short EMA.",0);
-if(e9[i]>e21[i])add("EMA trend +",2,"EMA9 is above EMA21.",1);else add("EMA trend -",-2,"EMA9 is below EMA21.",0);
-if(rr[i]>=55&&rr[i]<=72)add("RSI bullish",2,"RSI supports positive momentum without an extreme reading.",1);else if(rr[i]<45)add("RSI weak",-2,"RSI is below the midpoint.",0);else if(rr[i]>78)add("RSI overheated",-1,"RSI is elevated and reversal risk can increase.",0);else add("RSI neutral",0,"RSI is near the midpoint.",2);
-if(mc.h[i]>0)add("MACD positive",2,"MACD histogram is positive.",1);else add("MACD negative",-2,"MACD histogram is negative.",0);
-let slope=(e21[i]-e21[Math.max(0,i-12)])/e21[Math.max(0,i-12)]*100;if(slope>.15)add("EMA21 rising",1,"EMA21 is rising.",1);else if(slope<-.15)add("EMA21 falling",-1,"EMA21 is falling.",0);else add("EMA21 flat",0,"EMA21 is relatively flat.",2);
-let recent=c.slice(-24),hi=Math.max(...recent.map(x=>x.h)),lo=Math.min(...recent.map(x=>x.l)),atrPct=at[i]/a[i]*100,range=(hi-lo)/lo*100;
-let regime=range>3.2?"TREND / HIGH VOL":atrPct>.6?"VOLATILE":"RANGE / NORMAL",bias=score>=5?"BULLISH":score<=-5?"BEARISH":"WAIT",conf=Math.min(96,Math.max(48,50+Math.abs(score)*7));if(Math.abs(score)<=2)conf=Math.min(conf,62);
-let risk=atrPct>.9||rr[i]>80||rr[i]<20?"HIGH":atrPct>.55?"MEDIUM":"LOW";
-return{price:a[i],change:(a[i]-a[i-1])/a[i-1]*100,e9:e9[i],e21:e21[i],rsi:rr[i],atr:at[i],atrPct,macd:mc.m[i],hist:mc.h[i],score,bias,conf,regime,risk,why,pills,support:lo,resistance:hi,invalid:bias==="BULLISH"?lo:bias==="BEARISH"?hi:a[i],momentum:mc.h[i]>0?"POSITIVE":"NEGATIVE",structure:a[i]>e9[i]&&e9[i]>e21[i]?"UPTREND":a[i]<e9[i]&&e9[i]<e21[i]?"DOWNTREND":"MIXED"}}
-function draw(c,e9,e21){let cv=$("cv"),d=devicePixelRatio||1,r=cv.getBoundingClientRect();cv.width=r.width*d;cv.height=r.height*d;let x=cv.getContext("2d");x.scale(d,d);let w=r.width,h=r.height,p=26,vals=[...c.map(z=>z.c),...e9,...e21],mn=Math.min(...vals),mx=Math.max(...vals),sx=(w-p*2)/(c.length-1),sy=v=>h-p-(v-mn)/(mx-mn||1)*(h-p*2);x.strokeStyle="#172137";x.lineWidth=1;for(let k=0;k<5;k++){let y=p+k*(h-p*2)/4;x.beginPath();x.moveTo(p,y);x.lineTo(w-p,y);x.stroke()}function line(a,col,lw){x.strokeStyle=col;x.lineWidth=lw;x.beginPath();a.forEach((v,i)=>{let X=p+i*sx,Y=sy(v);i?x.lineTo(X,Y):x.moveTo(X,Y)});x.stroke()}line(c.map(z=>z.c),"#eef3ff",1.8);line(e9,"#65a8ff",1.2);line(e21,"#ffd166",1.2)}
-function hist(){let h=JSON.parse(localStorage.getItem("qx_premium_history")||"[]");$("hist").innerHTML=h.length?h.map(x=>`<tr><td>${x.t}</td><td>${x.s}</td><td>${x.f}</td><td class="${x.b==="BULLISH"?"bull":x.b==="BEARISH"?"bear":"wait"}">${x.b}</td><td>${x.c}%</td><td>${x.r}</td></tr>`).join(""):`<tr><td colspan="6">No signals yet.</td></tr>`}
-function save(s,f,a){let h=JSON.parse(localStorage.getItem("qx_premium_history")||"[]");h.unshift({t:new Date().toLocaleString(),s,f,b:a.bias,c:a.conf.toFixed(0),r:a.regime});localStorage.setItem("qx_premium_history",JSON.stringify(h.slice(0,30)))}
-async function run(){let s=$("symbol").value,f=$("tf").value;$("go").disabled=true;$("liveText").textContent="LOADING";try{let q=await fetch(`https://api.binance.com/api/v3/klines?symbol=${s}&interval=${f}&limit=180`);if(!q.ok)throw Error("Market feed unavailable");let raw=await q.json(),c=raw.map(k=>({t:k[0],o:+k[1],h:+k[2],l:+k[3],c:+k[4]}));let a=analyze(c),cl=c.map(x=>x.c),e9=ema(cl,9),e21=ema(cl,21);
-$("price").textContent=fmt(a.price);$("change").textContent=(a.change>=0?"+":"")+a.change.toFixed(3)+"% last candle";$("conf").textContent=a.conf+"%";$("regime").textContent=a.regime;$("rsi").textContent=a.rsi.toFixed(1);$("macd").textContent=a.macd.toFixed(5);$("macdState").textContent=a.hist>=0?"Histogram positive":"Histogram negative";$("atr").textContent=fmt(a.atr);$("atrPct").textContent=a.atrPct.toFixed(3)+"% ATR";
-$("chartName").textContent=s+" • "+f;$("updated").textContent=new Date().toLocaleTimeString();$("bias").textContent=a.bias;$("bias").className="bias "+(a.bias==="BULLISH"?"bull":a.bias==="BEARISH"?"bear":"wait");$("confidence").textContent=a.conf+"%";$("bar").style.width=Math.min(100,Math.max(5,50+a.score*8))+"%";$("regime2").textContent=a.regime+" • structured from volatility + price structure.";
-$("reasoning").innerHTML=a.why.slice(0,5).map((z,i)=>`<div class="aiBox" style="margin-top:6px;padding:8px"><strong>${i+1}. ${z}</strong></div>`).join("");$("support").textContent=fmt(a.support);$("resistance").textContent=fmt(a.resistance);$("invalid").textContent=fmt(a.invalid);$("risk").textContent=a.risk;
-$("pills").innerHTML=a.pills.map(z=>`<span class="pill ${z[1]===1?"pos":z[1]===0?"neg":""}">${z[0]}</span>`).join("");$("ema9").textContent=fmt(a.e9);$("ema21").textContent=fmt(a.e21);$("momentum").textContent=a.momentum;$("volatility").textContent=a.atrPct.toFixed(3)+"%";$("structure").textContent=a.structure;
-requestAnimationFrame(()=>draw(c,e9,e21));save(s,f,a);hist();$("liveText").textContent="LIVE FEED CONNECTED"}catch(e){$("liveText").textContent=e.message;$("liveDot").style.background="var(--red)"}finally{$("go").disabled=false}}
-$("go").onclick=run;$("symbol").onchange=run;$("tf").onchange=run;window.onresize=()=>run();hist();run();
+function parseText(t){
+ try{let j=JSON.parse(t);let arr=Array.isArray(j)?j:(j.data||j.candles||[]);return arr.map(x=>({o:+(x.o??x.open),h:+(x.h??x.high),l:+(x.l??x.low),c:+(x.c??x.close),t:x.t??x.time})).filter(x=>[x.o,x.h,x.l,x.c].every(Number.isFinite))}
+ catch(e){}
+ let lines=t.trim().split(/\r?\n/).filter(Boolean),rows=lines.map(x=>x.split(/[,;\t]/).map(v=>v.trim()));if(rows.length&&/[a-zA-Z]/.test(rows[0].join("")))rows.shift();
+ return rows.map(r=>({t:r[0],o:+r[1],h:+r[2],l:+r[3],c:+r[4]})).filter(x=>[x.o,x.h,x.l,x.c].every(Number.isFinite))
+}
+let candles=[];
+function analyze(){
+ if(candles.length<40){$("status").textContent="WAITING FOR CANDLE DATA";$("reason").textContent="Import at least 40 OHLC candles from your Quotex chart. No fake/live-looking price is generated.";return}
+ let a=candles.map(x=>x.c),i=a.length-1,e9=ema(a,9),e21=ema(a,21),rr=rsi(a),at=atr(candles),mc=macd(a),score=0,why=[],m=[];
+ function add(n,p,txt,pos){score+=p;why.push(txt);m.push([n,pos])}
+ if(a[i]>e9[i])add("Price > EMA9",2,"Price is above EMA9.",1);else add("Price < EMA9",-2,"Price is below EMA9.",0);
+ if(e9[i]>e21[i])add("EMA9 > EMA21",2,"Short trend is above the medium EMA.",1);else add("EMA9 < EMA21",-2,"Short trend is below the medium EMA.",0);
+ if(rr[i]>55&&rr[i]<72)add("RSI bullish",2,"RSI supports momentum without an extreme reading.",1);else if(rr[i]<45)add("RSI weak",-2,"RSI is below the midpoint.",0);else if(rr[i]>78)add("RSI high",-1,"RSI is elevated; chasing is higher risk.",0);else add("RSI neutral",0,"RSI is near neutral.",2);
+ if(mc.h[i]>0)add("MACD +",2,"MACD histogram is positive.",1);else add("MACD -",-2,"MACD histogram is negative.",0);
+ let slope=(e21[i]-e21[Math.max(0,i-12)])/e21[Math.max(0,i-12)]*100;if(slope>.08)add("Trend rising",1,"EMA21 slope is rising.",1);else if(slope<-.08)add("Trend falling",-1,"EMA21 slope is falling.",0);else add("Trend flat",0,"EMA21 slope is relatively flat.",2);
+ let recent=candles.slice(-30),sup=Math.min(...recent.map(x=>x.l)),res=Math.max(...recent.map(x=>x.h)),vol=at[i]/a[i]*100;
+ let bias=score>=5?"CALL":score<=-5?"PUT":"WAIT",conf=Math.min(94,Math.max(48,50+Math.abs(score)*7));if(Math.abs(score)<=2)conf=60;
+ let regime=vol>.7?"HIGH VOLATILITY":Math.abs(e9[i]-e21[i])/a[i]*100>.15?"TRENDING":"RANGE / MIXED";
+ $("price").textContent=fmt(a[i]);$("confidence").textContent=conf+"%";$("conf2").textContent=conf+"%";$("rsi").textContent=rr[i].toFixed(1);$("macd").textContent=mc.m[i].toFixed(6);$("macds").textContent=mc.h[i]>=0?"Histogram positive":"Histogram negative";$("vol").textContent=vol.toFixed(3)+"%";$("signal").textContent=bias;$("signal").className="big "+(bias==="CALL"?"call":bias==="PUT"?"put":"wait");$("bar").style.width=(50+score*8)+"%";$("regime").textContent=regime+" • "+$("asset").value+" • "+$("tf").value;$("reason").innerHTML=why.join(" ");
+ $("support").textContent=fmt(sup);$("resistance").textContent=fmt(res);$("invalid").textContent=bias==="CALL"?fmt(sup):bias==="PUT"?fmt(res):"—";$("expiry").textContent=$("exp").value;
+ $("matrix").innerHTML=m.map(x=>`<span class="pill ${x[1]===1?"ok":x[1]===0?"no":""}">${x[0]}</span>`).join("");
+ $("chartTitle").textContent="QUOTEX • "+$("asset").value+" • "+$("tf").value;$("updated").textContent=new Date().toLocaleTimeString();$("status").textContent="ANALYSIS READY";draw(candles,e9,e21)
+}
+function draw(c,e9,e21){let cv=$("cv"),d=devicePixelRatio||1,r=cv.getBoundingClientRect();cv.width=r.width*d;cv.height=r.height*d;let x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);let w=r.width,h=r.height,p=24,v=[...c.map(z=>z.c),...e9,...e21],mn=Math.min(...v),mx=Math.max(...v),sx=(w-p*2)/(c.length-1),sy=z=>h-p-(z-mn)/(mx-mn||1)*(h-p*2);x.strokeStyle="#172238";x.lineWidth=1;for(let k=0;k<5;k++){let y=p+k*(h-p*2)/4;x.beginPath();x.moveTo(p,y);x.lineTo(w-p,y);x.stroke()}function ln(a,col,lw){x.strokeStyle=col;x.lineWidth=lw;x.beginPath();a.forEach((z,i)=>{let X=p+i*sx,Y=sy(z);i?x.lineTo(X,Y):x.moveTo(X,Y)});x.stroke()}ln(c.map(z=>z.c),"#eef3ff",1.8);ln(e9,"#63a6ff",1.2);ln(e21,"#ffd166",1.2)}
+$("file").addEventListener("change",async e=>{let f=e.target.files[0];if(!f)return;let c=parseText(await f.text());if(c.length<40){$("status").textContent="NEED 40+ VALID OHLC CANDLES";return}candles=c.slice(-180);$("status").textContent="CANDLES IMPORTED";analyze()});
+$("analyze").onclick=analyze;$("asset").onchange=()=>{if(candles.length)analyze()};$("tf").onchange=()=>{if(candles.length)analyze()};$("exp").onchange=()=>{$("expiry").textContent=$("exp").value};
+window.onresize=()=>{if(candles.length)analyze()};
 </script>
 </body>
 </html>
