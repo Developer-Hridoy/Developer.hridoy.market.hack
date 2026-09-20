@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070a12">
+<title>QX Pro Ultra Premium</title>
+<style>
+:root{--bg:#070a12;--card:#0d1220;--card2:#11182a;--line:#202a40;--text:#eef3ff;--muted:#8e9bb3;--good:#32d583;--bad:#ff5d73;--warn:#ffc857;--accent:#6ea8fe}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#111a31 0,#070a12 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,select{font:inherit}button{cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:18px}
+.top{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}.brand{font-weight:900;letter-spacing:.4px;font-size:20px}.sub{color:var(--muted);font-size:12px;margin-top:3px}
+.controls{display:grid;grid-template-columns:1fr 1fr auto;gap:9px}.select,.btn{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:11px 12px}.btn.primary{background:#1769e8;border-color:#2d7cff}.btn:disabled{opacity:.55;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 12px 30px #0003}.label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.7px}.value{font-size:22px;font-weight:850;margin-top:6px}.small{font-size:12px;color:var(--muted);margin-top:4px}
+.main{display:grid;grid-template-columns:1.45fr .9fr;gap:12px;margin-top:12px}.chartcard{padding:0;overflow:hidden}.charthead{padding:14px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:center}.canvaswrap{height:360px;padding:8px}.chart{width:100%;height:100%}
+.bias{font-size:34px;font-weight:950;line-height:1}.bull{color:var(--good)}.bear{color:var(--bad)}.wait{color:var(--warn)}.score{height:9px;background:#202a40;border-radius:20px;overflow:hidden;margin:12px 0}.score i{display:block;height:100%;background:linear-gradient(90deg,var(--bad),var(--warn),var(--good));width:50%}
+.reason{margin:8px 0;padding:10px;border:1px solid var(--line);border-radius:12px;background:#0a0f1b;font-size:13px;line-height:1.45}.reason b{color:#fff}.pill{display:inline-block;padding:5px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;color:var(--muted);margin:2px}
+.section{margin-top:12px}.section h3{font-size:14px;margin:0 0 9px}.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{text-align:left;padding:9px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-weight:600}
+.status{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--warn)}.dot.ok{background:var(--good)}.dot.err{background:var(--bad)}
+.footer{padding:18px 2px;color:var(--muted);font-size:11px;text-align:center}.danger{color:var(--bad)}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.main{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.controls .primary{grid-column:1/-1}.canvaswrap{height:290px}.wrap{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><div class="brand">QX PRO ULTRA PREMIUM</div><div class="sub">AI-assisted technical market dashboard • GitHub Pages ready</div></div>
+    <div class="status"><i id="dot" class="dot"></i><span id="status">Connecting…</span></div>
+  </div>
+
+  <div class="card controls">
+    <select id="symbol" class="select">
+      <option>BTCUSDT</option><option>ETHUSDT</option><option>BNBUSDT</option><option>SOLUSDT</option><option>XRPUSDT</option><option>DOGEUSDT</option>
+    </select>
+    <select id="tf" class="select">
+      <option value="1m">1 minute</option><option value="5m" selected>5 minutes</option><option value="15m">15 minutes</option><option value="1h">1 hour</option><option value="4h">4 hours</option>
+    </select>
+    <button id="refresh" class="btn primary">Analyze Market</button>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="label">Price</div><div id="price" class="value">—</div><div id="change" class="small">—</div></div>
+    <div class="card"><div class="label">AI Confidence</div><div id="confidence" class="value">—</div><div id="regime" class="small">—</div></div>
+    <div class="card"><div class="label">RSI 14</div><div id="rsi" class="value">—</div><div id="macd" class="small">MACD —</div></div>
+    <div class="card"><div class="label">ATR / Volatility</div><div id="atr" class="value">—</div><div id="vol" class="small">—</div></div>
+  </div>
+
+  <div class="main">
+    <div class="card chartcard">
+      <div class="charthead"><div><b id="chartTitle">Market Structure</b><div class="small">Close price + EMA 9 / EMA 21</div></div><span id="updated" class="small">—</span></div>
+      <div class="canvaswrap"><canvas id="chart" class="chart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="label">AI Market Bias</div>
+      <div id="bias" class="bias wait">WAIT</div>
+      <div class="small">Rule-based confluence engine; not financial advice.</div>
+      <div class="score"><i id="scorebar"></i></div>
+      <div id="analysis"></div>
+      <div class="section">
+        <h3>Levels</h3>
+        <div class="reason"><b>Support</b><br><span id="support">—</span></div>
+        <div class="reason"><b>Resistance</b><br><span id="resistance">—</span></div>
+        <div class="reason"><b>Invalidation</b><br><span id="invalid">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card section">
+    <h3>Indicator Confluence</h3>
+    <div id="pills"></div>
+  </div>
+
+  <div class="card section">
+    <h3>Signal History</h3>
+    <table class="table"><thead><tr><th>Time</th><th>Symbol</th><th>TF</th><th>Bias</th><th>Confidence</th><th>Regime</th></tr></thead><tbody id="history"></tbody></table>
+  </div>
+
+  <div class="footer">Data: Binance public market endpoint. If a symbol/feed is unavailable, no synthetic market price is generated. The AI panel summarizes technical conditions and does not guarantee future price movement.</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const state={candles:[],last:null};
+const fmt=n=>Number(n).toLocaleString(undefined,{maximumFractionDigits:n>100?2:6});
+function setStatus(t,ok=true){$("status").textContent=t;$("dot").className="dot "+(ok?"ok":"err")}
+function ema(a,p){let k=2/(p+1),e=a[0];return a.map((v,i)=>i?((v*k)+(e*(1-k))):v).map((v,i)=>(e=v,v))}
+function rsi(a,p=14){let g=0,l=0;for(let i=1;i<=p;i++){let d=a[i]-a[i-1];if(d>=0)g+=d;else l-=d}g/=p;l/=p;let out=Array(a.length).fill(50);for(let i=p;i<a.length;i++){let d=a[i]-a[i-1];g=(g*(p-1)+(d>0?d:0))/p;l=(l*(p-1)+(d<0?-d:0))/p;out[i]=l===0?100:100-100/(1+g/l)}return out}
+function atr(c,p=14){let tr=c.map((x,i)=>i?Math.max(x.h-x.l,Math.abs(x.h-c[i-1].c),Math.abs(x.l-c[i-1].c)):x.h-x.l);let out=[];let e=tr.slice(0,p).reduce((a,b)=>a+b,0)/p;for(let i=0;i<tr.length;i++){if(i<p)out.push(e);else{e=(e*(p-1)+tr[i])/p;out.push(e)}}return out}
+function macd(a){let e12=ema(a,12),e26=ema(a,26),m=e12.map((x,i)=>x-e26[i]),s=ema(m,9);return {m,s,h:m.map((x,i)=>x-s[i])}}
+function pct(a,b){return b?((a-b)/b)*100:0}
+function analyze(c){
+ const closes=c.map(x=>x.c), e9=ema(closes,9),e21=ema(closes,21), rr=rsi(closes), at=atr(c), mc=macd(closes), i=closes.length-1, price=closes[i];
+ let score=0, reasons=[], pills=[];
+ const add=(label,pts,reason)=>{score+=pts;pills.push(label);if(reason)reasons.push(reason)};
+ if(price>e9[i]) add("Price > EMA9",2,"Price is above short-term EMA9.");
+ else add("Price < EMA9",-2,"Price is below short-term EMA9.");
+ if(e9[i]>e21[i]) add("EMA9 > EMA21",2,"Short EMA is above EMA21, supporting positive trend structure.");
+ else add("EMA9 < EMA21",-2,"Short EMA is below EMA21, supporting negative trend structure.");
+ if(rr[i]>=55&&rr[i]<=72) add("RSI bullish zone",2,"RSI is above the midpoint without being extremely overbought.");
+ else if(rr[i]<45) add("RSI weak",-2,"RSI is below the midpoint, showing weaker momentum.");
+ else if(rr[i]>78) add("RSI overheated",-1,"RSI is very high; chasing may carry elevated reversal risk.");
+ else if(rr[i]>=45&&rr[i]<55) add("RSI neutral",0,"RSI is near its midpoint.");
+ if(mc.h[i]>0) add("MACD histogram +",2,"MACD histogram is positive.");
+ else add("MACD histogram -",-2,"MACD histogram is negative.");
+ const slope=pct(e21[i],e21[Math.max(0,i-10)]);
+ if(Math.abs(slope)<0.12) add("Flat EMA21",0,"EMA21 slope is relatively flat, suggesting range conditions.");
+ else if(slope>0) add("EMA21 rising",1,"EMA21 is rising.");
+ else add("EMA21 falling",-1,"EMA21 is falling.");
+ const recent=c.slice(-20), hi=Math.max(...recent.map(x=>x.h)),lo=Math.min(...recent.map(x=>x.l));
+ const rangePct=pct(hi,lo), atrPct=at[i]/price*100;
+ const regime=rangePct>2.8?"Trending/volatile":atrPct>0.55?"Volatile":"Ranging";
+ let bias=score>=5?"BULLISH":score<=-5?"BEARISH":"WAIT";
+ let conf=Math.min(96,Math.max(45,50+Math.abs(score)*7));
+ if(Math.abs(score)<=2) conf=Math.min(conf,62);
+ const support=lo,resistance=hi;
+ const invalid=bias==="BULLISH"?support: bias==="BEARISH"?resistance:price;
+ return {price,e9:e9[i],e21:e21[i],rsi:rr[i],atr:at[i],macd:mc.m[i],hist:mc.h[i],bias,score,conf,regime,reasons,pills,support,resistance,invalid,change:pct(price,closes[Math.max(0,i-1)])};
+}
+function draw(c,e9,e21){
+ const cv=$("chart"),d=devicePixelRatio||1,rect=cv.getBoundingClientRect();cv.width=rect.width*d;cv.height=rect.height*d;const x=cv.getContext("2d");x.scale(d,d);const w=rect.width,h=rect.height,pad=28;
+ const vals=[...c.map(v=>v.c),...e9,...e21],mn=Math.min(...vals),mx=Math.max(...vals),sx=(w-pad*2)/(c.length-1),sy=v=>h-pad-(v-mn)/(mx-mn||1)*(h-pad*2);
+ x.strokeStyle="#202a40";x.lineWidth=1;for(let i=0;i<5;i++){let y=pad+i*(h-pad*2)/4;x.beginPath();x.moveTo(pad,y);x.lineTo(w-pad,y);x.stroke()}
+ function line(arr,stroke,lw){x.strokeStyle=stroke;x.lineWidth=lw;x.beginPath();arr.forEach((v,i)=>{let xx=pad+i*sx,yy=sy(v);i?x.lineTo(xx,yy):x.moveTo(xx,yy)});x.stroke()}
+ line(c.map(v=>v.c),"#eef3ff",1.8);line(e9,"#6ea8fe",1.2);line(e21,"#ffc857",1.2);
+}
+async function load(){
+ const symbol=$("symbol").value,tf=$("tf").value;$("refresh").disabled=true;setStatus("Loading market…",true);
+ try{
+  const u=`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${tf}&limit=180`;
+  const res=await fetch(u);if(!res.ok)throw Error("Market feed unavailable");
+  const raw=await res.json();if(!Array.isArray(raw)||raw.length<60)throw Error("Not enough market data");
+  state.candles=raw.map(k=>({t:k[0],o:+k[1],h:+k[2],l:+k[3],c:+k[4],v:+k[5]}));
+  const c=state.candles,a=analyze(c),cl=c.map(x=>x.c),e9=ema(cl,9),e21=ema(cl,21);state.last=a;
+  $("price").textContent=fmt(a.price);$("change").textContent=(a.change>=0?"+":"")+a.change.toFixed(3)+"% last candle";
+  $("confidence").textContent=a.conf.toFixed(0)+"%";$("regime").textContent=a.regime;
+  $("rsi").textContent=a.rsi.toFixed(1);$("macd").textContent="MACD "+a.macd.toFixed(5)+(a.hist>=0?" • positive":" • negative");
+  $("atr").textContent=fmt(a.atr);$("vol").textContent=(a.atr/a.price*100).toFixed(3)+"% ATR";
+  $("bias").textContent=a.bias;$("bias").className="bias "+(a.bias==="BULLISH"?"bull":a.bias==="BEARISH"?"bear":"wait");
+  $("scorebar").style.width=Math.min(100,Math.max(5,50+a.score*8))+"%";
+  $("support").textContent=fmt(a.support);$("resistance").textContent=fmt(a.resistance);$("invalid").textContent=fmt(a.invalid);
+  $("analysis").innerHTML=a.reasons.slice(0,5).map((r,i)=>`<div class="reason"><b>${i+1}.</b> ${r}</div>`).join("");
+  $("pills").innerHTML=a.pills.map(p=>`<span class="pill">${p}</span>`).join("");
+  $("chartTitle").textContent=`${symbol} • ${tf}`;$("updated").textContent=new Date().toLocaleTimeString();
+  requestAnimationFrame(()=>draw(c,e9,e21));saveHistory(symbol,tf,a);renderHistory();setStatus("Live feed connected",true);
+ }catch(e){setStatus(e.message||"Unable to load data",false)}
+ finally{$("refresh").disabled=false}
+}
+function saveHistory(symbol,tf,a){let h=JSON.parse(localStorage.getItem("qx_history")||"[]");h.unshift({time:new Date().toLocaleString(),symbol,tf,bias:a.bias,conf:a.conf,regime:a.regime});h=h.slice(0,30);localStorage.setItem("qx_history",JSON.stringify(h))}
+function renderHistory(){let h=JSON.parse(localStorage.getItem("qx_history")||"[]");$("history").innerHTML=h.length?h.map(x=>`<tr><td>${x.time}</td><td>${x.symbol}</td><td>${x.tf}</td><td class="${x.bias==="BULLISH"?"bull":x.bias==="BEARISH"?"bear":"wait"}">${x.bias}</td><td>${x.conf.toFixed(0)}%</td><td>${x.regime}</td></tr>`).join(""):`<tr><td colspan="6">No analysis history yet.</td></tr>`}
+$("refresh").onclick=load;$("symbol").onchange=load;$("tf").onchange=load;window.addEventListener("resize",()=>{if(state.candles.length){let cl=state.candles.map(x=>x.c);draw(state.candles,ema(cl,9),ema(cl,21))}});
+renderHistory();load();
+</script>
+</body>
+</html>
